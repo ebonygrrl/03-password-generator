@@ -1,12 +1,17 @@
 // Assignment Code
 function generatePassword() {
-  // Store output text
+  // Store characters
   var text = '';
   
-  // Get password length
-  
+  // Get password length  
   var charLength = parseInt(prompt("How many characters would you like? Must choose a number between 8-128.", ""));
 
+  // Ask until range criteria is met
+  while (charLength < 8 || charLength > 128) {
+    charLength = prompt("You must choose a number between 8 and 128!", "");
+  }
+
+  // Check if desired length is between 8 and 128
   if (charLength >= 8 && charLength <= 128) {
     // Store criteria in variable
     var uppercase = confirm("Would you like to use uppercase characters?"),
@@ -14,33 +19,35 @@ function generatePassword() {
           numeric = confirm("Would you like to use numeric characters?"),
           special = confirm("Would you like to use special characters?");
 
-    console.log(charLength, uppercase, lowercase, numeric, special);
+    //console.log(charLength, uppercase, lowercase, numeric, special); Check Boolean value
 
+    // Store characters by criteria
     if (uppercase === true) {
-    text += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+      text += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
     }
     if (lowercase === true) {
-    text += 'abcdefghijklmnopqrstuvwxyz';
+      text += 'abcdefghijklmnopqrstuvwxyz';
     }
     if (numeric === true) {
-    text += '1234567890';
+      text += '1234567890';
     }
     if (special === true) {
-    text += '!@#$%^&*()-_=+?><';
+      text += '!@#$%^&*()-_=+?><';
     }
-  } else {
-      charLength = prompt("You must choose a number between 8 and 128!", "");
-      return;
   }
 
-  console.log(text, text.length);
+  //console.log(text, text.length); Check criteria return
 
   var password = '';
+
+  // Loop until password is desired length entered
   for (i=0; i < charLength; i++) {
+    // Create random text string with each iteration
     password += text.charAt(Math.floor(Math.random() * text.length));
   }
 
-  //console.log(allChars[Math.floor(Math.random() * allChars.length)]);
+  //console.log(password.length); Check password length
+  
   return password;
 }
 
