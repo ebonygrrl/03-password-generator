@@ -11,8 +11,8 @@ function generatePassword() {
     charLength = prompt("You must choose a number between 8 and 128!", "");
   }
 
-  // Check if desired length is between 8 and 128
-  if (charLength >= 8 && charLength <= 128) {
+  // Check for at least 1 character set
+  do {
     // Store criteria in variable
     var uppercase = confirm("Would you like to use uppercase characters?"),
         lowercase = confirm("Would you like to use lowercase characters?"),
@@ -25,18 +25,26 @@ function generatePassword() {
     if (uppercase === true) {
       text += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
     }
+
     if (lowercase === true) {
       text += 'abcdefghijklmnopqrstuvwxyz';
     }
+
     if (numeric === true) {
       text += '1234567890';
     }
+
     if (special === true) {
       text += '!@#$%^&*()-_=+?><';
     }
-  }
 
-  //console.log(text, text.length); Check criteria return
+    if (text === '') {
+      alert("You must select at least one character");
+    }
+
+  } while (text === '');
+
+  //console.log(text, text.length); //Check criteria return
 
   var password = '';
 
