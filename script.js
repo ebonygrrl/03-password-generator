@@ -19,7 +19,13 @@ function generatePassword() {
           numeric = confirm("Would you like to use numeric characters?"),
           special = confirm("Would you like to use special characters?");
 
-    //console.log(charLength, uppercase, lowercase, numeric, special); Check Boolean value
+    // Check input value
+    console.log("Input password length: " + charLength);
+    console.log("Uppercase: " + uppercase);
+    console.log("Lowercase: " + lowercase);
+    console.log("Numeric: " + numeric);
+    console.log("Special characters: " + special);
+    console.log("----------");
 
     // Store characters by criteria
     if (uppercase === true) {
@@ -40,11 +46,15 @@ function generatePassword() {
 
     if (text === '') {
       alert("You must select at least one character");
+      console.log("No character selected.");
+      console.log("----------");
     }
 
   } while (text === '');
 
-  //console.log(text, text.length); //Check criteria return
+  // Check selected criteria return
+  console.log("Password character option: " + text); 
+  console.log("----------");
 
   var password = '';
 
@@ -54,8 +64,10 @@ function generatePassword() {
     password += text.charAt(Math.floor(Math.random() * text.length));
   }
 
-  //console.log(password.length); Check password length
+  // Check password length
+  console.log("Password length: " + password.length);
   
+  // Pass final output
   return password;
 }
 
